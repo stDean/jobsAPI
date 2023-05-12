@@ -5,6 +5,14 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const connectDB = require('./db/connect');
+const authRoute = require('./router/authRoute');
+const jobsRoute = require('./router/jobsRoute');
+
+app.use(express.json());
+
+// routes
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/jobs", jobsRoute);
 
 const start = async () => {
   try {
