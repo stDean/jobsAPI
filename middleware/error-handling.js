@@ -1,4 +1,4 @@
-const { CustomAPIError } = require('../errors');
+// const { CustomAPIError } = require('../errors');
 const { StatusCodes } = require('http-status-codes');
 
 
@@ -13,6 +13,7 @@ const ErrorHandlerMiddleware = (err, req, res, next) => {
   //   return res.status(err.statusCode).json({ msg: err.message });
   // }
 
+  // VALIDATION WITH MONGOOSE
   // if error is validation error, then get the values in the errors into an array,
   // get a new array that contains the message from the object in the first array
   // join it to form the error message
