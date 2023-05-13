@@ -1,3 +1,5 @@
+const Job = require('../models/jobs.model');
+
 const jobsController = {
   createJob: async () => {
     res.send("Create Job")
