@@ -4,7 +4,7 @@ const { UnauthenticatedError } = require('../errors');
 
 const AuthMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearers')) {
+  if (!authHeader || !authHeader.startsWith('Bearer')) {
     throw new UnauthenticatedError("Invalid Authorization")
   }
 
