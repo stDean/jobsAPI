@@ -15,6 +15,24 @@ const AuthMiddleware = require('./middleware/auth.middleware');
 const NotFoundMiddleware = require('./middleware/route-not-found');
 const ErrorsMiddleware = require('./middleware/error-handling');
 
+// security libraries
+const cors = require('cors');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const rateLimiter = require('express-rate-limit');
+
+// Security
+app.set('trust proxy', 1);
+app.use(
+  rateLimiter({
+    windowMs: 15 * 60 * 1000,
+    max: 100
+  })
+);
+app.use(cors());
+app.use(helmet());
+app.use(xss());
+
 app.use(express.json());
 
 // routes
