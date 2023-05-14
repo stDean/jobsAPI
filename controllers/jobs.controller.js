@@ -46,7 +46,10 @@ const jobsController = {
   },
   deleteJob: async (req, res) => {
     const { params: { id: jobId }, user: { userId } } = req;
-    await Job.findOneAndDelete({ _id: jobId, createdBy: userId });
+    const job = await Job.findOneAndDelete({ _id: jobId, createdBy: userId });
+    if (!job) {
+      throw new NotFoundError(`No job with id(${jobId}) found.`);
+    }
     res.status(StatusCodes.OK).json({ success: true });
   }
 }
